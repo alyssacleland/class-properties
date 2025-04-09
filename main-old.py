@@ -52,3 +52,17 @@ print(p.price)
 
 # 3.
 print(dir(p))
+
+
+# The underscores (__price) appear here because you're using a private variable to actually store the value. The __price variable is meant to be accessed only within the class, which is a Python convention for private variables (just a convention, not enforced).
+
+# When you define self.__price, you're creating a private variable.
+
+# In the getter, return self.__price accesses that private variable.
+
+# In the setter, self.__price = new_price sets the value of __price.
+
+# Why do you need the double underscores __ for __price?
+# The __ (double underscore) signals that the variable is intended to be private (again, it's just a convention). This is a part of Python's name mangling system, which "hides" the variable by changing its name internally, like renaming it to _Product__price. This helps avoid accidental conflicts when subclasses try to access it, and also prevents accidental direct access from outside the class.
+
+# Important: The double underscore doesn't completely make the variable private — it's still accessible by Product._Product__price. The name mangling simply makes it less likely that someone will accidentally access or change it.
